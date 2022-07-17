@@ -21,8 +21,22 @@ export class HeroService {
     getHero(id: number): Observable<Hero> {
         // For now, assume that a hero with the specified `id` always exists.
         // Error handling will be added in the next step of the tutorial.
-        const hero = HEROES.find(h => h.id === id)!;
+        //const hero = HEROES.find(h => Number(h.id)==Number(id))!;
+        const hero = HEROES.find(h => h.id==id)!;
         this.messageService.add(`HeroService: fetched hero id=${id}`);
         return of(hero);
     }
+
+    //getHero(id: number): Observable<Hero> {
+    getHero2(id: number): Hero{
+        // For now, assume that a hero with the specified `id` always exists.
+        // Error handling will be added in the next step of the tutorial.
+        const hero = HEROES.find(h => Number(h.id)==Number(id))!;
+        console.log('fetching hero id found:', HEROES.find(h => h.id==id));
+        console.log('fetching hero id found2:', hero);
+        this.messageService.add(`HeroService: fetched hero id=${id}`);
+        //return of(hero);
+        return hero;
+    }
+
 }
